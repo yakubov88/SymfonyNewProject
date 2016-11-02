@@ -1,0 +1,31 @@
+admin:
+    path:     /admin
+    defaults: { _controller: AdminBundle:Default:index }
+
+get:
+    path:    /admin/get
+    defaults: { _controller: AdminBundle:Default:getDoctrineValue }
+
+getdata:
+    path:    /admin/getdata
+    defaults: {_controller: AdminBundle:Default:getForm}
+
+update:
+    path:    /update/{id}
+    defaults : {_controller: AdminBundle:Default:update}
+
+updatenew:
+    path:    /updatenew/
+    defaults : {_controller: AdminBundle:Default:updatenew}
+
+delete:
+    path:    /delete/{id}
+    defaults : {_controller: AdminBundle:Default:delete}
+
+boot:
+    path:    /admin/boot
+    defaults: { _controller: AdminBundle:Default:bootstrap }
+
+modal:
+    path:    /admin/modal
+    defaults: { _controller: AdminBundle:Default:modal }

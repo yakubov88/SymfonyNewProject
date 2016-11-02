@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+<div class="main-login main-center">
+
+
+    <form class="form-horizontal" action="{{ path('updatenew') }}" method="post">
+        <label for="name" class="cols-sm-2 control-label">Your Name</label>
+        <input type="text" class="form-control" name="title" value="{{ user.title }}"><br>
+        <label for="name" class="cols-sm-2 control-label">Description</label>
+        <input type="text"  class="form-control"name="description" value="{{ user.description }}"><br>
+        <label for="name" class="cols-sm-2 control-label">Pacient</label>
+        <input type="text"  class="form-control"name="pacient" value="{{ user.pacient }}"><br>
+        <label for="name" class="cols-sm-2 control-label">Info</label>
+        <input type="text" class="form-control"name="info" value="{{ user.info }}"><br>
+        <input type="hidden" name="id" value="{{ user.id }}">
+
+        <input type="submit"  class="btn btn-success btn-lg btn3d" value="Update"><span class="glyphicon glyphicon-ok" value="Update"></span><br>
+
+
+    </form>
+
+</div>
+{% endblock %}
