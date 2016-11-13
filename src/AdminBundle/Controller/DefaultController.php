@@ -97,6 +97,7 @@ class DefaultController extends Controller
 
                 return $this->redirect($this->generateUrl('admin'));
             }
+            
         catch (EntityNotFoundExceptionxception $ex )
             {
                 $ex->getMessage();
