@@ -16,11 +16,11 @@ class DefaultController extends Controller
         $data=$em->getRepository('AdminBundle:TableDatabase')->findAll();
 
         $repo = $this ->getDoctrine()
-            ->getManager()
-            ->getRepository('AdminBundle:TableDatabase');
+                      ->getManager()
+                      ->getRepository('AdminBundle:TableDatabase');
 
         $qb = $repo->createQueryBuilder('t')
-                    ->select('COUNT(t)');
+                      ->select('COUNT(t)');
 
         $count = $qb->getQuery()->getSingleScalarResult();
 
@@ -54,7 +54,8 @@ class DefaultController extends Controller
     public function updateAction ($id)
     {
         $em=$this->getDoctrine()->getManager();
-        $user=$em->getRepository('AdminBundle:TableDatabase')->findOneBy(array('id'=>$id));
+        $user=$em->getRepository('AdminBundle:TableDatabase')
+                 ->findOneBy(array('id'=>$id));
 
 
         return $this->render('AdminBundle:Default:update.html.twig',array('user'=>$user));
