@@ -3,6 +3,7 @@
 namespace AdminBundle\Controller;
 
 use AdminBundle\Entity\TableDatabase;
+use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bridge\Doctrine;
 use Symfony\Component\HttpFoundation\Request;
@@ -85,14 +86,22 @@ class DefaultController extends Controller
 
     public function deleteAction ($id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $entity= $em->getRepository('AdminBundle:TableDatabase')->findOneBy(array('id'=>$id));
+        try
+            {
+                $em = $this->getDoctrine()->getManager();
+                $entity= $em->getRepository('AdminBundle:TableDatabase')->findOneBy(array('id'=>$id));
 
-        $em->remove($entity);
-        $em->flush();
-        $this->get('session')->getFlashBag()->add('info', "delete data");
+                $em->remove($entity);
+                $em->flush();
+                $this->get('session')->getFlashBag()->add('info', "delete data");
 
-        return $this->redirect($this->generateUrl('admin'));
+                return $this->redirect($this->generateUrl('admin'));
+            }
+        catch (EntityNotFoundExceptionxception $ex )
+            {
+                $ex->getMessage();
+            }
+
     }
 
     public  function  bootstrapAction ()
