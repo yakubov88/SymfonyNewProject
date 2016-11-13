@@ -14,7 +14,7 @@ class DefaultController extends Controller
         $em=$this->getDoctrine()->getManager();
         $data=$em->getRepository('AdminBundle:TableDatabase')->findAll();
 
-        $repo = $this   ->getDoctrine()
+        $repo = $this ->getDoctrine()
             ->getManager()
             ->getRepository('AdminBundle:TableDatabase');
 
@@ -41,8 +41,7 @@ class DefaultController extends Controller
         $em->persist($entity);
         $em->flush();
 
-
-
+        $this->get('session')->getFlashBag()->add('info', "get data.");
         return $this->redirect($this->generateUrl('admin'));
 
     }
@@ -55,6 +54,7 @@ class DefaultController extends Controller
     {
         $em=$this->getDoctrine()->getManager();
         $user=$em->getRepository('AdminBundle:TableDatabase')->findOneBy(array('id'=>$id));
+
 
         return $this->render('AdminBundle:Default:update.html.twig',array('user'=>$user));
 
@@ -77,7 +77,7 @@ class DefaultController extends Controller
 
         $em->flush();
 
-
+        $this->get('session')->getFlashBag()->add('info', "update data");
 
         return $this->redirect($this->generateUrl('admin'));
 
@@ -90,7 +90,7 @@ class DefaultController extends Controller
 
         $em->remove($entity);
         $em->flush();
-
+        $this->get('session')->getFlashBag()->add('info', "delete data");
 
         return $this->redirect($this->generateUrl('admin'));
     }
